@@ -1,6 +1,5 @@
 package com.gf.controller;
 
-import com.gf.entity.Storage;
 import com.gf.service.StorageService;
 import io.seata.core.context.RootContext;
 import lombok.RequiredArgsConstructor;

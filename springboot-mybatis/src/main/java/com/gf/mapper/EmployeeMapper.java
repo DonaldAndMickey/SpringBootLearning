@@ -1,7 +1,7 @@
 package com.gf.mapper;
 
-import com.gf.entity.Employee;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gf.entity.Employee;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -14,5 +14,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface EmployeeMapper extends BaseMapper<Employee> {
-
+    Employee baseResultMap();
 }
