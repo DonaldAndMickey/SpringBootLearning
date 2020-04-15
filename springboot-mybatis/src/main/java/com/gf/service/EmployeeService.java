@@ -12,5 +12,6 @@ import com.gf.entity.Employee;
  * @since 2018-11-25
  */
 public interface EmployeeService extends IService<Employee> {
-
+    int insertOnlyOne(Employee employee);
+    int updateOnlyOne(Employee employee);
 }

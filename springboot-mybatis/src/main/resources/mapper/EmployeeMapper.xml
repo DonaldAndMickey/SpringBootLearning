@@ -9,11 +9,70 @@
         <result column="email" property="email" />
         <result column="gender" property="gender" />
         <result column="d_id" property="dId" />
+        <result column="user_name" property="userName"/>
+        <result column="in_erp_account" property="inErpAccount"/>
+        <result column="out_erp_account" property="outErpAccount"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, lastName, email, gender, d_id
+        id, lastName, email, gender, d_id,user_name,in_erp_account,out_erp_account
     </sql>
+
+    <sql id="key">
+        <trim suffixOverrides=",">
+            lastName,email,gender,d_id,
+            <if test="userName != null and userName !=''">
+                user_name,
+            </if>
+            <if test="inErpAccount !=null">
+                in_erp_account,
+            </if>
+            <if test="outErpAccount !=null">
+                out_erp_account,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="value">
+        <trim suffixOverrides=",">
+            #{lastName},#{email},#{gender},#{dId},
+            <if test="userName != null and userName !=''">
+                #{userName},
+            </if>
+            <if test="inErpAccount !=null">
+                #{inErpAccount},
+            </if>
+            <if test="outErpAccount !=null">
+                #{outErpAccount},
+            </if>
+        </trim>
+    </sql>
+
+    <insert id="insertOnlyOne" parameterType="com.gf.entity.Employee">
+        insert into tb_employee (<include refid="key"/>)
+        VALUES (<include refid="value"/>)
+    </insert>
+
+
+    <update id="updateOnlyOne" parameterType="com.gf.entity.Employee">
+        update tb_employee
+        <trim prefix="set" suffixOverrides=",">
+            in_erp_account=#{inErpAccount},out_erp_account=#{outErpAccount},
+            <if test="email !=null">
+                email=#{email},
+            </if>
+            <if test="gender !=null">
+                gender=#{gender},
+            </if>
+            <if test="dId !=null">
+                d_id=#{dId},
+            </if>
+            <if test="userName !=null and userName !=''">
+                user_name=#{userName}
+            </if>
+        </trim>
+        where id=#{id}
+    </update>
 
 </mapper>

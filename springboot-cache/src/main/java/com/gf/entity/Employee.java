@@ -1,7 +1,6 @@
 package com.gf.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -24,7 +23,7 @@ public class Employee extends Model<Employee> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @TableField("lastName")
+    //@TableField("lastName")
     private String lastName;
 
     private String email;

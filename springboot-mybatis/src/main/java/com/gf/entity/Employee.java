@@ -36,8 +36,14 @@ public class Employee extends Model<Employee> {
     private String email;
 
     private Integer gender;
-
+   // @TableField("d_id")
     private Integer dId;
+   // @TableField("user_name")
+    private String userName;
+    //@TableField("in_erp_account")
+    private String inErpAccount;
+    //@TableField("out_erp_account")
+    private String outErpAccount;
 
 
     @Override
